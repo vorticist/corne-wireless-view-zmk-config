@@ -68,3 +68,15 @@
         extra_3 { status = "reserved"; };
     };
 };
+
+// Fix RGB underglow LED count 
+// Note: Adjust this number to match your actual LED count per half
+// Common values: 6, 12, or 27 LEDs per half depending on your Corne variant
+&led_strip {
+    chain-length = <12>;
+};
+
+// Fix nice_view display pin conflict by reassigning CS pin
+&nice_view_spi {
+    cs-gpios = <&pro_micro 0 GPIO_ACTIVE_HIGH>;  // Use D0 (008) for CS
+};
